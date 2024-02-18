@@ -70,14 +70,14 @@ function checkHorizontalWinner() {
           board[row][col] === board[row][col + 3] && 
           board[row][col] !== '') {
           // This executes when we find four in a row - horizontally
-           const winningIdArray = [
+          const winningIdArray = [
                     `${row}-${col}`,  
                     `${row}-${col + 1}`, 
                     `${row}-${col + 2}`, 
                     `${row}-${col + 3}`
                   ]
-           colorWinningCells(winningIdArray)
-        return true
+          colorWinningCells(winningIdArray)
+          return true
       }
     }
   }
