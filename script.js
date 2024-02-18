@@ -15,9 +15,7 @@ let board = [
   ['', '', '', '', '', '', ''], // 5
 ]
 
-  
 // Check for vertical winners
-
 function checkForVerticalWinner() {
   for (let col = 0; col < board[0].length; col++) {
     for (let row = 0; row < board.length -3; row++) {
@@ -42,7 +40,6 @@ function checkForVerticalWinner() {
   }
 }
 
-
 function colorWinningCells(IdArray) {
   // Loop through the array of IDs
   for (let i = 0; i < IdArray.length; i++) {
@@ -55,11 +52,6 @@ function colorWinningCells(IdArray) {
     
   }
 }
-
-
-// THIS IS KEMALS TEST
-
-
 
 function checkHorizontalWinner() {
   for (let row = 0; row < board.length; row++) {
@@ -83,14 +75,9 @@ function checkHorizontalWinner() {
   }
 }
 
-
 function checkForWinner() {
   return checkForVerticalWinner() || checkHorizontalWinner()
 }
-
-
-
-
 
 function updateCellBackground(cellId) {
   // If there is winner, skip function:
@@ -107,7 +94,6 @@ function updateCellBackground(cellId) {
   switchCurrentPlayer()
 }
 
-
 function updateBoard(cellId) {
   const cellNumbersArray = cellId.split('-')
   const column = Number(cellNumbersArray[1])
@@ -122,9 +108,7 @@ function updateBoard(cellId) {
     }
   }
 }
-
-
-                  
+              
 function switchCurrentPlayer() {
   if (currentPlayer === playerOne) {
     currentPlayer = playerTwo
