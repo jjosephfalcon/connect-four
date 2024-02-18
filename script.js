@@ -62,18 +62,26 @@ function colorWinningCells(IdArray) {
 
 
 function checkHorizontalWinner() {
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      if (board[i][j] === board[i][j + 1] && 
-          board[i][j] === board[i][j + 2] && 
-          board[i][j] === board[i][j + 3] && 
-          board[i][j] !== '') {
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+
+      if (board[row][col] === board[row][col + 1] && 
+          board[row][col] === board[row][col + 2] && 
+          board[row][col] === board[row][col + 3] && 
+          board[row][col] !== '') {
+          // This executes when we find four in a row - horizontally
+           const winningIdArray = [
+                    `${row}-${col}`,  
+                    `${row}-${col + 1}`, 
+                    `${row}-${col + 2}`, 
+                    `${row}-${col + 3}`
+                  ]
+           colorWinningCells(winningIdArray)
         return true
       }
     }
   }
 }
-
 
 
 function checkForWinner() {
