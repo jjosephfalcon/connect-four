@@ -6,7 +6,7 @@ let winner = false
 let currentPlayer = playerOne
 
 let board = [
-  // 0   1    2   3   4   5   6
+// 0   1    2   3   4   5   6
   ['', '', '', '', '', '', ''], // 0
   ['', '', '', '', '', '', ''], // 1
   ['', '', '', '', '', '', ''], // 2
@@ -14,6 +14,36 @@ let board = [
   ['', '', '', '', '', '', ''], // 4
   ['', '', '', '', '', '', ''], // 5
 ]
+
+function checkForDiagonalWinner() {
+  const rows = board.length;
+  const cols = board[0].length;
+
+  // Top left --> Bottom right
+  for (let i=3; i < rows; i++) {
+    for (let j=0; j < cols - 3; j++) {
+      console.log(`i:${i} j:${j}`)
+      if (board[j][i] === currentPlayer &&
+          board[j-1][i+1] === currentPlayer &&
+          board[j-2][i+3] === currentPlayer &&
+          board[j-3][i+3] === currentPlayer 
+      ) {
+        console.log("winner was found")
+        const winningIdArray = [
+          `${i}-${j}`, 
+          `${i - 1}-${j + 1}`, 
+          `${i - 2}-${j + 2}`, 
+          `${i - 3}-${j + 3}`
+        ]
+        // Pass the winning IDs to our colorWinningCells function, so it can do its job.
+        colorWinningCells(winningIdArray)
+
+         return true;
+        }
+    }
+  }
+}
+
 
 // Check for vertical winners
 function checkForVerticalWinner() {
@@ -40,19 +70,6 @@ function checkForVerticalWinner() {
   }
 }
 
-function colorWinningCells(IdArray) {
-  // Loop through the array of IDs
-  for (let i = 0; i < IdArray.length; i++) {
-    // Get the ID of the cell
-    const id = IdArray[i]
-    // Get the cell element
-    const cell = document.getElementById(id)
-    // Add the glowing class to the element, to make it glow
-    cell.classList.add('glowing-element')
-    
-  }
-}
-
 function checkHorizontalWinner() {
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board[row].length; col++) {
@@ -76,7 +93,21 @@ function checkHorizontalWinner() {
 }
 
 function checkForWinner() {
-  return checkForVerticalWinner() || checkHorizontalWinner()
+  return checkForVerticalWinner() || checkHorizontalWinner() || checkForDiagonalWinner()
+}
+
+function colorWinningCells(IdArray) {
+  // Loop through the array of IDs
+  for (let i = 0; i < IdArray.length; i++) {
+    // Get the ID of the cell
+    const id = IdArray[i]
+    // Get the cell element
+    const cell = document.getElementById(id)
+    // Add the glowing class to the element, to make it glow
+    cell.classList.add('glowing-element')
+    
+    
+  }
 }
 
 function updateCellBackground(cellId) {
