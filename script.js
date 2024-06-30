@@ -16,32 +16,58 @@ let board = [
 ]
 
 function checkForDiagonalWinner() {
-  const rows = board.length;
-  const cols = board[0].length;
+  const rows = board.length
+  const cols = board[0].length
 
   // Top left --> Bottom right
-  for (let i=3; i < rows; i++) {
-    for (let j=0; j < cols - 3; j++) {
-      console.log(`i:${i} j:${j}`)
-      if (board[j][i] === currentPlayer &&
-          board[j-1][i+1] === currentPlayer &&
-          board[j-2][i+3] === currentPlayer &&
-          board[j-3][i+3] === currentPlayer 
+  for (let row = 3; row < rows; row++) {
+    for (let col = 0; col < cols - 3; col++) {
+      
+      if (board[row][col] === currentPlayer &&
+          board[row-1][col + 1] === currentPlayer &&
+          board[row-2][col + 2] === currentPlayer &&
+          board[row-3][col + 3] === currentPlayer 
       ) {
-        console.log("winner was found")
+        
         const winningIdArray = [
-          `${i}-${j}`, 
-          `${i - 1}-${j + 1}`, 
-          `${i - 2}-${j + 2}`, 
-          `${i - 3}-${j + 3}`
+          `${row}-${col}`, 
+          `${row - 1}-${col + 1}`, 
+          `${row - 2}-${col + 2}`, 
+          `${row - 3}-${col + 3}`
         ]
+      
         // Pass the winning IDs to our colorWinningCells function, so it can do its job.
         colorWinningCells(winningIdArray)
 
-         return true;
+         return true
         }
     }
   }
+
+  // Top right --> Bottom left
+  for (let row = 0; row < rows - 3; row++) {
+    for (let col = 0; col < cols - 3; col++) {
+      if (board[row][col] == currentPlayer &&
+          board[row + 1][col + 1] == currentPlayer &&
+          board[row + 2][col + 2] == currentPlayer &&
+          board[row + 3][col + 3] == currentPlayer 
+      ) {
+        const winningIdArray = [
+          `${row}-${col}`, 
+          `${row + 1}-${col + 1}`, 
+          `${row + 2}-${col + 2}`, 
+          `${row + 3}-${col + 3}`
+        ]
+        console.log({ winningIdArray })
+        // Pass the winning IDs to our colorWinningCells function, so it can do its job.
+        colorWinningCells(winningIdArray)
+
+         return true
+      }
+    }
+  }
+
+  return false
 }
 
 
@@ -68,6 +94,8 @@ function checkForVerticalWinner() {
       }
     }
   }
+
+  return false
 }
 
 function checkHorizontalWinner() {
@@ -85,11 +113,14 @@ function checkHorizontalWinner() {
                     `${row}-${col + 2}`, 
                     `${row}-${col + 3}`
                   ]
+          
           colorWinningCells(winningIdArray)
           return true
       }
     }
   }
+
+  return false
 }
 
 function checkForWinner() {
