@@ -58,7 +58,6 @@ function checkForDiagonalWinner() {
           `${row + 2}-${col + 2}`, 
           `${row + 3}-${col + 3}`
         ]
-        console.log({ winningIdArray })
         // Pass the winning IDs to our colorWinningCells function, so it can do its job.
         colorWinningCells(winningIdArray)
 
@@ -142,15 +141,17 @@ function colorWinningCells(IdArray) {
 }
 
 function updateCellBackground(cellId) {
+ 
   // If there is winner, skip function:
-  if (winner) {
-    return 
-  }
+  if (winner) return 
+
   // Use the cellId to grab the right element from our HTML
   updateBoard(cellId)
 
   // After board is updated, check if there is a winner
- winner = checkForWinner()
+  winner = checkForWinner()
+
+  if (winner) winnerText()
 
   // right after setting a the currentPlayer color, switch players using our func
   switchCurrentPlayer()
@@ -164,7 +165,6 @@ function updateBoard(cellId) {
     if (board[i][column] === '') {
       board[i][column] = currentPlayer
       const cell = document.getElementById(i + '-' + column)
-      console.log("CellClicked: ", (i + '-' + column))
       cell.style.backgroundColor = currentPlayer
       break
     }
@@ -179,12 +179,15 @@ function switchCurrentPlayer() {
   }
 }
 
-function updateWinner(cellId) {
-  let column = Number(cellId.split('-')[1]);
-  for (let l = 0; l < 4; l++) {
-    if (board[l][column] === "winning-cell") {
-      const winnerText = currentPlayer === playerOne ? "Red player wins!" : "Yellow player wins!";
-      document.querySelector('.update-color').textContent = winnerText;
-    }
-  }
+function winnerText() {
+  const winMessage = currentPlayer === playerOne ? "Red player wins!" : "Yellow player wins!";
+  // This grabs out winnerText element from HTML, then we can make changes to it.
+  const winnerText = document.querySelector('.winner-text');
+
+  winnerText.textContent = winMessage
+
+
+        
 }
+
+
