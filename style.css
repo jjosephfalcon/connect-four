@@ -75,4 +75,7 @@ html {
   border: 2px solid black;
   width: 100px;
   height: 100px;
+  align-items: center;
+  margin: 100px;
+  gap: 50px;
 }
