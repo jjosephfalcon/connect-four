@@ -6,7 +6,8 @@ Connect Four game using JS, HTML &amp; CSS
 
 # HomeWork:
 
-As of now, we have the game working as intended and have added our winning message.
+- Make the restart button glow just like the winning cells do. 
+- Make the restart button work.
 
-To do:
-     
+Bonus:
+- **The text and the restart button should not show, until a person wins.

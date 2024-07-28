@@ -180,11 +180,12 @@ function switchCurrentPlayer() {
 }
 
 function winnerText() {
-  const winMessage = currentPlayer === playerOne ? "Red player wins!" : "Yellow player wins!";
+  const winMessage = currentPlayer === playerOne ? "Red player wins!" : "Yellow player wins!"
   // This grabs out winnerText element from HTML, then we can make changes to it.
-  const winnerText = document.querySelector('.winner-text');
+  const winnerText = document.querySelector('.winner-text')
 
   winnerText.textContent = winMessage
+  winnerText.style.color = currentPlayer
 
 
         

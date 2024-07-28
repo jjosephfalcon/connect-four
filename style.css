@@ -8,7 +8,10 @@ html {
   }
   
   .container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin-top: 50px;
   
   }
@@ -17,6 +20,7 @@ html {
     display: inline-block;
     border: 5px solid lightblue;
     background-color: #0d1191;
+    width: 434px;
   }
   
   .row {
@@ -71,11 +75,27 @@ html {
     border-radius: 50%;
   }
 
-.win-message {
-  border: 2px solid black;
-  width: 100px;
-  height: 100px;
-  align-items: center;
-  margin: 100px;
-  gap: 50px;
-}
+  .win-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 444px;
+  }
+
+  .winner-text {
+    font-size: 20px;
+  }
+
+  .restart-button {
+    color: #0d1191;
+    background-color: lightblue;
+    margin: 4px 2px;
+    padding: 0px 15px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    height: 35px;
+
+  }
