@@ -15,6 +15,8 @@ let board = [
   ['', '', '', '', '', '', ''], // 5
 ]
 
+
+
 function checkForDiagonalWinner() {
   const rows = board.length
   const cols = board[0].length
@@ -68,7 +70,6 @@ function checkForDiagonalWinner() {
 
   return false
 }
-
 
 // Check for vertical winners
 function checkForVerticalWinner() {
@@ -191,4 +192,18 @@ function winnerText() {
         
 }
 
+function restartGame() {
+  winner = false;
+  for (let row=0; row < board.length; row++) {
+    for (let col=0; col < board[row].length; col++) {
+      // Set the cell back to empty string
+      board[row][col] = ''
+      // Set the background of cell to lightblue again
+      const cell = document.getElementById(`${row}-${col}`)
+      cell.style.backgroundColor = 'lightblue'
+    }
+  }
+  
+
+}
 
