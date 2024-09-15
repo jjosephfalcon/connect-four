@@ -80,16 +80,18 @@ html {
     justify-content: space-between;
     align-items: center;
     width: 444px;
+    height: 60px;
   }
 
   .winner-text {
     font-size: 20px;
+    margin-left: 10px;
   }
 
   .restart-button {
     color: #0d1191;
     background-color: lightblue;
-    margin: 4px 2px;
+    margin: 4px 10px;
     padding: 0px 15px;
     font-size: 16px;
     text-align: center;

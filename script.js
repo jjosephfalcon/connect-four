@@ -194,16 +194,15 @@ function winnerText() {
 
 function restartGame() {
   winner = false;
-  for (let row=0; row < board.length; row++) {
-    for (let col=0; col < board[row].length; col++) {
-      // Set the cell back to empty string
-      board[row][col] = ''
-      // Set the background of cell to lightblue again
-      const cell = document.getElementById(`${row}-${col}`)
-      cell.style.backgroundColor = 'lightblue'
+
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+      board[row][col] = '';
+      const cell = document.getElementById(`${row}-${col}`);
+      cell.style.backgroundColor = 'lightblue';
+      cell.classList.remove('glowing-element');
     }
   }
-  
 
+  document.querySelector('.winner-text').textContent = '';
 }
-
